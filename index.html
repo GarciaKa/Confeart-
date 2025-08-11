@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ConfeArt — Links Oficiais</title>
+  <meta name="description" content="Acesse nossos links oficiais: WhatsApp, Instagram, TikTok e Mercado Livre." />
+  <meta name="theme-color" content="#4F46E5" />
+  <!--
+  =============================
+  SITE DE LINKS 100% EDITÁVEL
+  =============================
+  Como editar rapidamente:
+  1) Vá ao bloco CONFIG abaixo (JavaScript) e troque: nome da marca, slogan, cores e links.
+  2) Substitua o src do LOGO por sua imagem (PNG/SVG) local: /logo.png
+  3) Cores: mude as variáveis em :root (ou no objeto config.colors) para refinar o tema.
+  4) Para adicionar/remover botões: edite a lista config.links.
+  5) Não precisa de frameworks. É um arquivo único (HTML+CSS+JS).
+
+  Dica: busque manter o logo em PNG com fundo transparente para melhor resultado.
+  -->
+  <style>
+    /* ====== TEMA BÁSICO (CSS Vars) ====== */
+    :root {
+      --brand: #f6d6ae;         /* Primária */
+      --brand-2: #f6d6ae;       /* Secundária */
+      --bg: #f6d6ae;            /* Fundo principal */
+      --card: #2b1a0f;
+      --card-border: rgba(255,255,255,0.12);
+      --text: #E7E9EE;          /* Texto */
+      --muted: #A7AEBC;         /* Texto secundário */
+      --ring: #f6d6ae; /* glow */
+      --radius: 22px;           /* Arredondamento global */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    /* ====== RESET SUAVE ====== */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% 0%, #ffedd6, transparent 60%),
+                  radial-gradient(1000px 500px at 90% 10%,#ffd39c, transparent 60%),
+                  linear-gradient(180deg, #ffedd6, #f6d6ae 55%, #dfb076);
+      display: grid; place-items: center;
+      padding: 32px;
+    }
+
+    /* ====== CONTAINER ====== */
+    .card {
+      width: 100%; max-width: 880px;
+      background: color-mix(in srgb, var(--card) 100%, transparent);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      backdrop-filter: saturate(120%) blur(8px);
+    }
+    .card::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background: radial-gradient(800px 300px at 0% -10%, rgba(79,70,229,.10), transparent 50%),
+                  radial-gradient(600px 260px at 100% -10%, rgba(6,182,212,.08), transparent 50%);
+    }
+
+    /* ====== HEADER ====== */
+    header {
+      display: grid; grid-template-columns: 96px 1fr auto; gap: 20px;
+      align-items: center;
+      padding: 28px 28px 16px;
+    }
+    .brand-logo {
+      width: 96px; height: 96px; border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--card-border);
+      display: grid; place-items: center; overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .titles h1 { margin: 0 0 6px; font-size: clamp(22px, 2.5vw, 34px); letter-spacing: .2px; }
+    .titles p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .color-swatch {
+      display: flex; gap: 8px; align-items: center;
+    }
+    .dot { width: 14px; height: 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); }
+    .dot.primary { background: var(--brand); }
+    .dot.secondary { background: var(--brand-2); }
+
+    /* ====== BOTÕES ====== */
+    .links {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      padding: 10px 28px 28px;
+    }
+    .btn {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--card-border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      color: var(--text); text-decoration: none; font-weight: 600;
+      letter-spacing: .2px; position: relative; overflow: hidden;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--brand) 40%, var(--card-border)); }
+    .btn:focus { outline: none; box-shadow: 0 0 0 6px var(--ring); }
+    .btn .icon { width: 26px; height: 26px; display: grid; place-items: center; }
+    .btn small { color: var(--muted); font-weight: 500; }
+
+    /* Cores individuais por plataforma (opcional) */
+    .btn.whatsapp { background: linear-gradient(180deg, rgba(37,211,102,.15), rgba(255,255,255,.03)); }
+    .btn.instagram { background: linear-gradient(180deg, rgba(225,48,108,.16), rgba(255,255,255,.03)); }
+    .btn.tiktok { background: linear-gradient(180deg, rgba(0,242,234,.16), rgba(255,255,255,.03)); }
+    .btn.meli { background: linear-gradient(180deg, #fffb004d, rgba(255,255,255,.03)); }
+
+    /* ====== FOOTER ====== */
+    footer { color: var(--muted); font-size: 12px; text-align: center; padding: 8px 20px 22px; }
+    .made { opacity: .8; }
+
+    /* ====== RESPONSIVO FINO ====== */
+    @media (max-width: 520px) {
+      header { grid-template-columns: 72px 1fr; gap: 14px; }
+      .color-swatch { display: none; }
+      .brand-logo { width: 72px; height: 72px; border-radius: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <header>
+      <!-- LOGO: substitua /logo.png pela sua imagem -->
+      <div class="brand-logo" aria-label="Logo da empresa">
+        <img src="logo.png" alt="Logo ConfeArt" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'><defs><linearGradient id=\'g\' x1=\'0\' x2=\'1\'><stop stop-color=\'%234F46E5\'/><stop offset=\'1\' stop-color=\'%2306B6D4\'/></linearGradient></defs><rect width=\'200\' height=\'200\' rx=\'28\' fill=\'%23ffffff10\'/><circle cx=\'100\' cy=\'100\' r=\'56\' fill=\'url(%23g)\' opacity=\'0.75\'/></svg>'" />
+      </div>
+      <div class="titles">
+        <h1 id="brand-name">ConfeArt</h1>
+        <p id="brand-tag">Criamos visuais que vendem mais.</p>
+      </div>
+      <div class="color-swatch" aria-hidden="true">
+        <span class="dot primary"></span>
+        <span class="dot secondary"></span>
+      </div>
+    </header>
+
+    <section class="links" id="links"></section>
+
+    <footer>
+      <div class="made">© <span id="year"></span> <span id="brand-mini">ConfeArt</span>. Todos os direitos reservados.</div>
+    </footer>
+  </main>
+
+  <script>
+    // =============================
+    // CONFIG (edite aqui)
+    // =============================
+    const config = {
+      brand: {
+        name: "ConfeArt",
+        tagline: "Embalagens e Doces.",
+        // Substitua por seu arquivo local: /logo.png (na mesma pasta)
+        logoSrc: "logo.png",
+      },
+      colors: {
+        brand: "#f6d49f",    // Primária
+        brand2: "#2b1a0f",   // Secundária
+        background: "#0b1020",
+        text: "#E7E9EE",
+        muted: "#A7AEBC",
+      },
+      links: [
+        {
+          label: "WhatsApp",
+          hint: "Atendimento rápido",
+          url: "https://api.whatsapp.com/send?phone=5518991587436",
+          key: "whatsapp",
+          icon: "whatsapp",
+        },
+        {
+          label: "Instagram",
+          hint: "Portfólio e bastidores",
+          url: "https://www.instagram.com/confeart.oficial",
+          key: "instagram",
+          icon: "instagram",
+        },
+        {
+          label: "TikTok",
+          hint: "Dicas e bastidores",
+          url: "https://www.tiktok.com/@confeart_oficial",
+          key: "tiktok",
+          icon: "tiktok",
+        },
+        {
+          label: "Loja no Mercado Livre",
+          hint: "Compre com segurança",
+          url: "https://www.mercadolivre.com.br/pagina/confeart#from=share_eshop",
+          key: "meli",
+          icon: "bag",
+        },
+        // Exemplo extra: adicionar mais
+        // { label: "Catálogo PDF", hint: "Linha completa", url: "/catalogo.pdf", key: "catalogo", icon: "file" },
+      ],
+    };
+
+    // =============================
+    // APLICA CONFIG
+    // =============================
+    const $ = (sel) => document.querySelector(sel);
+    const root = document.documentElement;
+
+    // Cores
+    root.style.setProperty('--brand', config.colors.brand);
+    root.style.setProperty('--brand-2', config.colors.brand2);
+    root.style.setProperty('--bg', config.colors.background);
+    root.style.setProperty('--text', config.colors.text);
+    root.style.setProperty('--muted', config.colors.muted);
+
+    // Marca
+    $('#brand-name').textContent = config.brand.name;
+    $('#brand-tag').textContent = config.brand.tagline;
+    $('#brand-mini').textContent = config.brand.name;
+    document.title = `${config.brand.name} — Links Oficiais`;
+    const logoEl = document.querySelector('.brand-logo img');
+    if (config.brand.logoSrc) logoEl.src = config.brand.logoSrc;
+
+    // Ano
+    $('#year').textContent = new Date().getFullYear();
+
+    // Gera botões
+    const linksWrap = $('#links');
+    config.links.forEach((link) => {
+      const a = document.createElement('a');
+      a.href = link.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.className = `btn ${link.key}`;
+      a.innerHTML = `
+        <span class="icon">${getIcon(link.icon)}</span>
+        <span>
+          ${link.label}<br />
+          <small>${link.hint ?? ''}</small>
+        </span>
+      `;
+      linksWrap.appendChild(a);
+    });
+
+    // =============================
+    // ÍCONES SVG (inline, sem dependências)
+    // =============================
+    function getIcon(name) {
+      switch (name) {
+        case 'whatsapp':
+          return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.52 3.48A11.5 11.5 0 1 0 3.47 20.53L2 22l1.61-.21 2.02-.26a11.5 11.5 0 0 0 14.89-18.05Z" stroke="currentColor" stroke-opacity=".55" stroke-width="1.2"/><path d="M8.9 9.1c-.34.34-.61 1.79.9 3.3 1.51 1.51 2.96 1.24 3.3.9.2-.2.67-.55.38-1.01-.29-.46-1.12-1.04-1.34-1.11-.22-.07-.4.05-.6.25s-.42.24-.66.1c-.24-.14-1.08-.69-1.54-1.15-.46-.46-1.01-1.3-1.15-1.54-.14-.24-.09-.47.1-.66.2-.2.32-.38.25-.6-.07-.22-.65-1.05-1.11-1.34-.46-.29-.81.18-1.01.38Z" fill="currentColor"/></svg>`;
+        case 'instagram':
+          return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-opacity=".55" stroke-width="1.2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>`;
+        case 'tiktok':
+          return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 5c.9 1.6 2.7 3 5 3" stroke="currentColor" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/></svg>`;
+        case 'bag':
+          return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="10" width="18" height="11" rx="3" stroke="currentColor" stroke-opacity=".55" stroke-width="1.2"/></svg>`;
+        case 'file':
+          return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" stroke="currentColor" stroke-width="1.4"/><path d="M14 3v5h5" stroke="currentColor" stroke-opacity=".6" stroke-width="1.2"/></svg>`;
+        default:
+          return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".55" stroke-width="1.2"/><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`;
+      }
+    }
+  </script>
+</body>
+</html>
